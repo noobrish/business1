@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Coco-Mesty</title>
+
+<style>
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background-color: #f2f2f2;
+}
+
+.section {
+    display: none;
+}
+
+.section.active {
+    display: block;
+}
+
+.box {
+    background: white;
+    margin: 20px auto;
+    padding: 20px;
+    width: 250px;
+    border-radius: 10px;
+    border: 2px solid #333;
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    background: #4CAF50;
+    color: white;
+}
+
+button:hover {
+    background: #45a049;
+}
+</style>
+</head>
+
+<body>
+
+<!-- HOME -->
+<div id="home" class="section active">
+    <h1>🎁 Coco-Mesty Mystery Boxes</h1>
+
+    <div class="box">
+        <h3>Small Box</h3>
+        <p>Only $67</p>
+        <button onclick="openBox('Small', 67)">Choose</button>
+    </div>
+
+    <div class="box">
+        <h3>Mid Box</h3>
+        <p>Only $99</p>
+        <button onclick="openBox('Mid', 99)">Choose</button>
+    </div>
+
+    <div class="box">
+        <h3>Big Box</h3>
+        <p>Only $199</p>
+        <button onclick="openBox('Big', 199)">Choose</button>
+    </div>
+</div>
+
+<!-- BOX PAGE -->
+<div id="boxPage" class="section">
+    <h1 id="boxName"></h1>
+    <p id="boxPrice"></p>
+    <button onclick="goOrder()">Order Now</button>
+</div>
+
+<!-- ORDER PAGE -->
+<div id="orderPage" class="section">
+    <h1>📦 Order Now</h1>
+    <p>Scan the QR code 👇</p>
+
+    <!-- Fake QR (replace image if you want) -->
+    <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=You%20are%20fool"
+         alt="QR Code">
+
+    <p><strong>You are a fool 😄</strong></p>
+</div>
+
+<script>
+function openBox(name, price) {
+    document.getElementById("home").classList.remove("active");
+    document.getElementById("boxPage").classList.add("active");
+
+    document.getElementById("boxName").innerText = name + " Mystery Box";
+    document.getElementById("boxPrice").innerText = "Only $" + price;
+}
+
+function goOrder() {
+    document.getElementById("boxPage").classList.remove("active");
+    document.getElementById("orderPage").classList.add("active");
+}
+</script>
+
+</body>
+</html>
